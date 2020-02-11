@@ -59,7 +59,9 @@ def multiplicar(n1,n2):
 
 def dividir(n1,n2):
     div:int = n1 / n2
+    resto = n1 % n2
     print(div)
+    print(resto)
 
 def potencia(n1,n2):
     pot:int = n1 ** n2
