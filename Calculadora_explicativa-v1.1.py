@@ -1,4 +1,4 @@
-from math import pow, sqrt
+from math import pow, sqrt, factorial, sin, cos, tan, radians
 from time import sleep
 
 
@@ -6,33 +6,42 @@ def msg():
     while True:
         inicio()
         try:
-            home = int(input('Escolha uma operação \n[+]1\n[-]2\n[*]3\n[/]4\n[n]5\n[√]6\n  => '))  # Requisita que o usuario escolha a operação
+            home = int(input('Escolha uma operação \n[+]1\n[-]2\n[*]3\n[/]4\n[n]5\n[√]6\n[%]7\n[n!]8\n[sen]9\n[cos]10\n[tan]11\n  => '))  # Requisita que o usuario escolha a operação
             if home == 1:
                 soma()
             elif home == 2:
                 subtrair()
-                break
             elif home == 3:
                 multiplicar()
-                break
             elif home == 4:
                 dividir()
-                break
             elif home == 5:
                 potencia()
-                break
             elif home == 6:
                 raiz()
-                break
+            elif home == 7:
+                porcentagem()
+            elif home == 8:
+                fatorial()
+            elif home == 9:
+                seno()
+            elif home == 10:
+                coseno()
+            elif home == 11:
+                tangente()
             else:
                 print('Opcão inválida!')
                 sleep(2)
                 print('_'*20, '\n'*20)
+        except ValueError:
+            print(f'Isto não é um numero. Digite somente valor numérico.')
+        except ZeroDivisionError:
+            print(f'O denominador nã pode ser zero.')
         except Exception as e:
-            print(f"Error! digite somente numeros.\nErro: {e}")
+            print(f'Aconteceu algum erro inesperado.\nErro {e}')
             sleep(3)
         while True:
-            finalizar = str(input('Finaliar programa? [S/N] ')).upper().strip()[0]
+            finalizar = str(input('Finalizar programa? [S/N] ')).upper().strip()[0]
             if finalizar in 'S':
                 print('finalizando...')
                 sleep(1)
@@ -41,7 +50,7 @@ def msg():
                 msg()
             else:
                 print('\n'*20)
-                print('Digite S para sair ou N paracontinuar')
+                print('Digite S para sair ou N para continuar')
 
 
 
@@ -63,7 +72,7 @@ def inicio():
 def soma():
     n1 = float(input('Insira um numero: '))
     n2 = float(input('Insira outro numero: '))
-    somar: int = n1 + n2
+    somar = n1 + n2
     print('_'*20)
     print(f'Resultado: {somar}')
     print('_'*20)
@@ -72,7 +81,7 @@ def soma():
 def subtrair():
     n1 = float(input('Insira um numero: '))
     n2 = float(input('Insira outro numero: '))
-    sub: int = n1 - n2
+    sub = n1 - n2
     print('_' * 20)
     print(f'Resultado: {sub}')
     print('_' * 20)
@@ -81,7 +90,7 @@ def subtrair():
 def multiplicar():
     n1 = float(input('Insira um numero: '))
     n2 = float(input('Insira outro numero: '))
-    mult: int = n1 * n2
+    mult = n1 * n2
     print('_' * 20)
     print(f'Resultado: {mult}')
     print('_' * 20)
@@ -90,7 +99,7 @@ def multiplicar():
 def dividir():
     n1 = float(input('Insira um numero: '))
     n2 = float(input('Insira outro numero: '))
-    div: int = n1 / n2
+    div = n1 / n2
     print('_' * 20)
     print(f'Resultado: {div:.2f}')
     print('_' * 20)
@@ -99,7 +108,7 @@ def dividir():
 def potencia():
     n1 = float(input('Insira um numero: '))
     n2 = float(input('Insira o expoente: '))
-    pot: int = pow(n1, n2)
+    pot = pow(n1, n2)
     print('_' * 20)
     print(f'Resultado: {pot}')
     print('_' * 20)
@@ -111,6 +120,36 @@ def raiz():
     print('_' * 20)
     print(f'Resultado: {rai:.2f}')
     print('_' * 20)
+
+
+def porcentagem():
+    n1 = float(input('Insira um numero: '))
+    n2 = float(input('Insira a porcentagem: '))
+    porc = (n2 * n1) / 100
+    print(f'Resultado: {porc:.2f}')
+
+def fatorial():
+    n1 = int(input('Insira um numero inteiro: '))
+    fat = factorial(n1)
+    print(f'Resultado: {fat:.2f}')
+
+def seno():
+    n1 = int(input('Insira um angulo: '))
+    angulo = radians(n1)
+    s = sin(angulo)
+    print(f'Resultado: {s:.2f}')
+
+def coseno():
+    n1 = int(input('Insira um angulo: '))
+    angulo = radians(n1)
+    s = cos(angulo)
+    print(f'Resultado: {s:.2f}')
+
+def tangente():
+    n1 = int(input('Insira um angulo: '))
+    angulo = radians(n1)
+    s = tan(angulo)
+    print(f'Resultado: {s:.2f}')
 
 
 msg()
